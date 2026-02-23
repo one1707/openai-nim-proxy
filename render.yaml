@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: my-app
+    runtime: node          # Change to: python, docker, etc.
+    region: oregon         # Options: oregon, frankfurt, singapore, ohio
+    plan: free             # Options: free, starter, standard, pro
+    branch: main           # Git branch to deploy from
+    buildCommand: npm install && npm run build   # Your build step
+    startCommand: npm start                      # Your start/run command
+    healthCheckPath: /     # Render pings this to confirm app is up
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000        # Render expects your app to listen on this port
+      # Add more env vars below, e.g.:
+      # - key: DATABASE_URL
+      #   fromDatabase:
+      #     name: my-db
+      #     property: connectionString
+
+# Optional: Add a managed PostgreSQL database
+# databases:
+#   - name: my-db
+#     databaseName: myapp
+#     user: myapp
+#     plan: free
