@@ -32,8 +32,8 @@ const MODEL_MAPPING = {
   'gemini-pro':     'qwen/qwen3-235b-a22b-instruct-2507',         // Qwen3 latest (replaces coder)
   'gpt-4o-mini':    'meta/llama-3.3-70b-instruct',                // Fast + capable
   'claude-3-haiku': 'mistralai/mistral-nemo-12b-instruct',        // Speedy fallback
-  'glm-5':          'z-ai/glm5',                                  // Z.AI flagship - 744B MoE
-  'glm-4.7':        'z-ai/glm4.7'                                 // Z.AI - 358B, great reasoning
+  'glm-5':          'zai-org/GLM-5',                              // Z.AI flagship - 744B MoE
+  'glm-4.7':        'zai-org/GLM-4.7'                             // Z.AI - great reasoning + RP
 };
 
 // Health check endpoint
