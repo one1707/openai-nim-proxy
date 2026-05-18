@@ -18,22 +18,22 @@ const NIM_API_KEY = process.env.NIM_API_KEY;
 // 🔥 REASONING DISPLAY TOGGLE - Shows/hides reasoning in output
 const SHOW_REASONING = false;
 
-// 🔥 THINKING MODE TOGGLE - Enables thinking for specific models that support it
+// 🔥 THINKING MODE TOGGLE - Disabled: causes thinking budget exhaustion on GLM-4.7
 const ENABLE_THINKING_MODE = false;
 
-// Model mapping (adjust based on available NIM models)
+// Model mapping
 const MODEL_MAPPING = {
-  'gpt-3.5-turbo':  'meta/llama-3.1-70b-instruct',               // Fast, lightweight
+  'gpt-3.5-turbo':  'meta/llama-3.3-70b-instruct',               // Fast, lightweight
   'gpt-4':          'nvidia/llama-3.1-nemotron-ultra-253b-v1',    // NVIDIA flagship
   'gpt-4-turbo':    'moonshotai/kimi-k2-instruct-0905',           // Great for long context/RP
-  'gpt-4o':         'deepseek-ai/deepseek-v3.1',                  // Best for Janitor AI RP
+  'gpt-4o':         'deepseek-ai/deepseek-v3.1',                  // Great for RP
   'claude-3-opus':  'openai/gpt-oss-120b',                        // Large OpenAI-hosted model
   'claude-3-sonnet':'openai/gpt-oss-20b',                         // Faster/lighter
-  'gemini-pro':     'qwen/qwen3-235b-a22b-instruct-2507',         // Qwen3 latest (replaces coder)
+  'gemini-pro':     'qwen/qwen3-235b-a22b-instruct-2507',         // Qwen3 latest
   'gpt-4o-mini':    'meta/llama-3.3-70b-instruct',                // Fast + capable
   'claude-3-haiku': 'mistralai/mistral-nemo-12b-instruct',        // Speedy fallback
-  'glm-5':          'zai-org/GLM-5',                              // Z.AI flagship - 744B MoE
-  'glm-4.7':        'zai-org/GLM-4.7'                             // Z.AI - great reasoning + RP
+  'glm-4.7':        'z-ai/glm4.7',                                // Best for RP ✅
+  'glm-5':          'z-ai/glm-5.1'                                // GLM-5 deprecated 4/20/26
 };
 
 // Health check endpoint
@@ -73,8 +73,8 @@ app.post('/v1/chat/completions', async (req, res) => {
         }, {
           headers: { 'Authorization': `Bearer ${NIM_API_KEY}`, 'Content-Type': 'application/json' },
           validateStatus: (status) => status < 500
-        }).then(res => {
-          if (res.status >= 200 && res.status < 300) nimModel = model;
+        }).then(r => {
+          if (r.status >= 200 && r.status < 300) nimModel = model;
         });
       } catch (e) {}
       
@@ -94,8 +94,8 @@ app.post('/v1/chat/completions', async (req, res) => {
     const nimRequest = {
       model: nimModel,
       messages: messages,
-      temperature: temperature || 0.6,
-      max_tokens: max_tokens || 9024,
+      temperature: temperature || 1.0,
+      max_tokens: max_tokens || 32768,
       extra_body: ENABLE_THINKING_MODE ? { chat_template_kwargs: { thinking: true } } : undefined,
       stream: stream || false
     };
