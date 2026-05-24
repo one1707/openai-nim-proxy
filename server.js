@@ -28,12 +28,19 @@ const MODEL_MAPPING = {
   'gpt-4-turbo':    'moonshotai/kimi-k2-instruct-0905',           // Great for long context/RP
   'gpt-4o':         'deepseek-ai/deepseek-v3.1',                  // Great for RP
   'claude-3-opus':  'openai/gpt-oss-120b',                        // Large OpenAI-hosted model
+  'gpt-oss-120b':   'openai/gpt-oss-120b',                        // Direct access
   'claude-3-sonnet':'openai/gpt-oss-20b',                         // Faster/lighter
   'gemini-pro':     'qwen/qwen3-235b-a22b-instruct-2507',         // Qwen3 latest
   'gpt-4o-mini':    'meta/llama-3.3-70b-instruct',                // Fast + capable
   'claude-3-haiku': 'mistralai/mistral-nemo-12b-instruct',        // Speedy fallback
   'glm-4.7':        'z-ai/glm4.7',                                // Best for RP ✅
-  'glm-5':          'z-ai/glm-5.1'                                // GLM-5 deprecated 4/20/26
+  'glm-5':          'z-ai/glm-5.1',                               // GLM-5 deprecated 4/20/26
+  'glm-5.1':        'z-ai/glm-5.1',                               // Z.AI GLM-5.1 latest
+  'llama-4-maverick': 'meta/llama-4-maverick-17b-128e-instruct',  // Meta multimodal MoE
+  'nemotron-super':   'nvidia/nemotron-3-super-120b-a12b',         // NVIDIA 120B agentic model
+  'kimi-k2.6':        'moonshotai/kimi-k2.6',                      // Moonshot 1T MoE, 256K context
+  'kimi-k2':          'moonshotai/kimi-k2-instruct',               // Original Kimi K2 instruct
+  'kimi-k2-thinking': 'moonshotai/kimi-k2-thinking'                // Kimi K2 with reasoning/thinking
 };
 
 // Health check endpoint
