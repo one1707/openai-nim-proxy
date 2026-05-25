@@ -32,7 +32,10 @@ const MODEL_MAPPING = {
   'claude-3-sonnet':'openai/gpt-oss-20b',                         // Faster/lighter
   'gemini-pro':     'qwen/qwen3-235b-a22b-instruct-2507',         // Qwen3 latest
   'gpt-4o-mini':    'meta/llama-3.3-70b-instruct',                // Fast + capable
-  'claude-3-haiku': 'mistralai/mistral-nemo-12b-instruct',        // Speedy fallback
+  'claude-3-haiku':   'mistralai/mistral-nemo-12b-instruct',       // Speedy fallback
+  'mistral-large':    'mistralai/mistral-large-3-675b',            // Mistral flagship 675B
+  'mistral-small':    'mistralai/mistral-small-4',                 // 119B, 256K context, multimodal
+  'mistral-medium':   'mistralai/mistral-medium-3-5-128b'          // 128B dense, 256K, reasoning toggle
   'glm-4.7':        'z-ai/glm4.7',                                // Best for RP ✅
   'glm-5':          'z-ai/glm-5.1',                               // GLM-5 deprecated 4/20/26
   'glm-5.1':        'z-ai/glm-5.1',                               // Z.AI GLM-5.1 latest
