@@ -36,11 +36,14 @@ const MODEL_MAPPING = {
   'mistral-large':    'mistralai/mistral-large-3-675b',            // Mistral flagship 675B
   'mistral-small':    'mistralai/mistral-small-4',                 // 119B, 256K context, multimodal
   'mistral-medium':   'mistralai/mistral-medium-3-5-128b'          // 128B dense, 256K, reasoning toggle
-  'glm-4.7':        'z-ai/glm4.7',                                // Best for RP ✅
+  'glm-4.7':        'z-ai/glm4.7',                                // ⚠️ DEPRECATED - avoid
+  'deepseek-v3.2':    'deepseek-ai/deepseek-v3.2',                  // ✅ Best RP replacement for GLM-4.7
+  'deepseek-v4-pro':  'deepseek-ai/deepseek-v4-pro',                // 1.6T params, 1M context ⚠️ may be buggy
   'glm-5':          'z-ai/glm-5.1',                               // GLM-5 deprecated 4/20/26
   'glm-5.1':        'z-ai/glm-5.1',                               // Z.AI GLM-5.1 latest
   'llama-4-maverick': 'meta/llama-4-maverick-17b-128e-instruct',  // Meta multimodal MoE
   'nemotron-super':   'nvidia/nemotron-3-super-120b-a12b',         // NVIDIA 120B agentic model
+  'nemotron-nano-omni': 'nvidia/nemotron-3-nano-omni-30b-a3b-reasoning' // Multimodal: text/image/audio/video
   'kimi-k2.6':        'moonshotai/kimi-k2.6',                      // Moonshot 1T MoE, 256K context
   'kimi-k2':          'moonshotai/kimi-k2-instruct',               // Original Kimi K2 instruct
   'kimi-k2-thinking': 'moonshotai/kimi-k2-thinking'                // Kimi K2 with reasoning/thinking
