@@ -39,6 +39,7 @@ const MODEL_MAPPING = {
   'glm-4.7':        'z-ai/glm4.7',                                // ⚠️ DEPRECATED - avoid
   'deepseek-v3.2':    'deepseek-ai/deepseek-v3.2',                  // ✅ Best RP replacement for GLM-4.7
   'deepseek-v4-pro':  'deepseek-ai/deepseek-v4-pro',                // 1.6T params, 1M context ⚠️ may be buggy
+  'minimax-m2.7':     'minimaxai/minimax-m2.7'                       // 230B MoE, 205K context, free
   'glm-5':          'z-ai/glm-5.1',                               // GLM-5 deprecated 4/20/26
   'glm-5.1':        'z-ai/glm-5.1',                               // Z.AI GLM-5.1 latest
   'llama-4-maverick': 'meta/llama-4-maverick-17b-128e-instruct',  // Meta multimodal MoE
