@@ -34,7 +34,7 @@ const MODEL_MAPPING = {
   'gpt-4o-mini':    'meta/llama-3.3-70b-instruct',                // Fast + capable
   'claude-3-haiku':   'mistralai/mistral-nemo-12b-instruct',       // Speedy fallback
   'mistral-large':    'mistralai/mistral-large-3-675b',            // Mistral flagship 675B
-  'mistral-small':    'mistralai/mistral-small-4',                 // 119B, 256K context, multimodal
+  'mistral-small':    'mistralai/mistral-small-4-119b-2603',        // 119B, 256K context, multimodal
   'mistral-medium':   'mistralai/mistral-medium-3-5-128b'          // 128B dense, 256K, reasoning toggle
   'glm-4.7':        'z-ai/glm4.7',                                // ⚠️ DEPRECATED - avoid
   'deepseek-v3.2':    'deepseek-ai/deepseek-v3.2',                  // ✅ Best RP replacement for GLM-4.7
