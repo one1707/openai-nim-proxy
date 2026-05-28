@@ -15,39 +15,59 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 const NIM_API_BASE = process.env.NIM_API_BASE || 'https://integrate.api.nvidia.com/v1';
 const NIM_API_KEY = process.env.NIM_API_KEY;
 
-// 🔥 REASONING DISPLAY TOGGLE - Shows/hides reasoning in output
+// 🔥 REASONING DISPLAY TOGGLE
 const SHOW_REASONING = false;
 
-// 🔥 THINKING MODE TOGGLE - Disabled: causes thinking budget exhaustion on GLM-4.7
+// 🔥 THINKING MODE TOGGLE - Disabled: causes thinking budget exhaustion
 const ENABLE_THINKING_MODE = false;
 
-// Model mapping
+// ============================================================
+// MODEL MAPPING - Type the LEFT side into Janitor AI
+// ============================================================
 const MODEL_MAPPING = {
-  'gpt-3.5-turbo':  'meta/llama-3.3-70b-instruct',               // Fast, lightweight
-  'gpt-4':          'nvidia/llama-3.1-nemotron-ultra-253b-v1',    // NVIDIA flagship
-  'gpt-4-turbo':    'moonshotai/kimi-k2-instruct-0905',           // Great for long context/RP
-  'gpt-4o':         'deepseek-ai/deepseek-v3.1',                  // Great for RP
-  'claude-3-opus':  'openai/gpt-oss-120b',                        // Large OpenAI-hosted model
-  'gpt-oss-120b':   'openai/gpt-oss-120b',                        // Direct access
-  'claude-3-sonnet':'openai/gpt-oss-20b',                         // Faster/lighter
-  'gemini-pro':     'qwen/qwen3-235b-a22b-instruct-2507',         // Qwen3 latest
-  'gpt-4o-mini':    'meta/llama-3.3-70b-instruct',                // Fast + capable
-  'claude-3-haiku':   'mistralai/mistral-nemo-12b-instruct',       // Speedy fallback
-  'mistral-large':    'mistralai/mistral-large-3-675b',            // Mistral flagship 675B
-  'mistral-small':    'mistralai/mistral-small-4-119b-2603',        // 119B, 256K context, multimodal
-  'mistral-medium':   'mistralai/mistral-medium-3-5-128b'          // 128B dense, 256K, reasoning toggle
-  'glm-4.7':        'z-ai/glm4.7',                                // ⚠️ DEPRECATED - avoid
-  'deepseek-v3.2':    'deepseek-ai/deepseek-v3.2',                  // ✅ Best RP replacement for GLM-4.7
-  'deepseek-v4-pro':  'deepseek-ai/deepseek-v4-pro',                // 1.6T params, 1M context ⚠️ may be buggy
-  'minimax-m2.7':     'minimaxai/minimax-m2.7'                       // 230B MoE, 205K context, free
-  'glm-5':          'z-ai/glm-5.1',                               // GLM-5 deprecated 4/20/26
-  'glm-5.1':        'z-ai/glm-5.1',                               // Z.AI GLM-5.1 latest
-  'llama-4-maverick': 'meta/llama-4-maverick-17b-128e-instruct',  // Meta multimodal MoE
-  'nemotron-super':   'nvidia/nemotron-3-super-120b-a12b',         // NVIDIA 120B agentic model
-  'nemotron-nano-omni': 'nvidia/nemotron-3-nano-omni-30b-a3b-reasoning' // Multimodal: text/image/audio/video
-  'kimi-k2.6':        'moonshotai/kimi-k2.6',                      // Moonshot 1T MoE, 256K context
-  'kimi-k2':          'moonshotai/kimi-k2-instruct',               // Original Kimi K2 instruct
-  'kimi-k2-thinking': 'moonshotai/kimi-k2-thinking'                // Kimi K2 with reasoning/thinking
+  // --- BEST FOR RP ---
+  'z-ai/glm4.7':        'z-ai/glm4.7',                              // ✅ Best for RP (if working)
+  'kimi-k2':            'moonshotai/kimi-k2-instruct',              // ✅ Great for RP
+  'kimi-k2-thinking':   'moonshotai/kimi-k2-thinking',              // ✅ Great for RP + thinking
+  'kimi-k2.6':          'moonshotai/kimi-k2.6',                     // ✅ Latest Kimi
+  'deepseek-v4-pro':    'deepseek-ai/deepseek-v4-pro',              // ✅ Best available DeepSeek
+
+  // --- GENERAL / FAST ---
+  'gpt-3.5-turbo':      'meta/llama-3.3-70b-instruct',              // Fast
+  'gpt-4o':             'deepseek-ai/deepseek-v4-pro',              // Maps to DeepSeek V4 Pro
+  'gpt-4o-mini':        'meta/llama-3.3-70b-instruct',              // Fast
+  'gpt-4':              'nvidia/llama-3.1-nemotron-ultra-253b-v1',  // NVIDIA flagship
+  'gpt-4-turbo':        'moonshotai/kimi-k2-instruct-0905',         // Long context
+  'gemini-pro':         'qwen/qwen3-235b-a22b-instruct-2507',       // Qwen3 235B
+
+  // --- MISTRAL ---
+  'mistral-large':      'mistralai/mistral-large-3-675b',           // Mistral flagship 675B
+  'mistral-medium':     'mistralai/mistral-medium-3-5-128b',        // 128B dense, 256K context
+  'mistral-small':      'mistralai/mistral-small-4-119b-2603',      // 119B, 256K context
+  'claude-3-haiku':     'mistralai/mistral-nemo-12b-instruct',      // Speedy fallback
+
+  // --- QWEN ---
+  'qwen-122b':          'qwen/qwen3.5-122b-a10b',                   // Qwen3.5 122B
+  'qwen-397b':          'qwen/qwen3.5-397b-a17b',                   // ⭐ Qwen3.5 397B VLM
+
+  // --- MINIMAX ---
+  'minimax-m2.5':       'minimaxai/minimax-m2.5',                   // 230B MoE
+  'minimax-m2.7':       'minimaxai/minimax-m2.7',                   // 230B MoE, 205K context
+
+  // --- NVIDIA NEMOTRON ---
+  'nemotron-super':     'nvidia/nemotron-3-super-120b-a12b',        // 120B agentic
+  'nemotron-nano-omni': 'nvidia/nemotron-3-nano-omni-30b-a3b-reasoning', // Multimodal
+
+  // --- GLM (Z.AI) ---
+  'glm-4.7':            'z-ai/glm4.7',                              // ⚠️ May be deprecated
+  'glm-5':              'z-ai/glm-5.1',                             // GLM-5 deprecated 4/20/26
+  'glm-5.1':            'z-ai/glm-5.1',                             // Latest GLM
+
+  // --- OTHER ---
+  'claude-3-opus':      'openai/gpt-oss-120b',                      // Large model
+  'gpt-oss-120b':       'openai/gpt-oss-120b',                      // Direct access
+  'claude-3-sonnet':    'openai/gpt-oss-20b',                       // Lighter
+  'llama-4-maverick':   'meta/llama-4-maverick-17b-128e-instruct',  // Meta multimodal
 };
 
 // Health check endpoint
@@ -60,7 +80,7 @@ app.get('/health', (req, res) => {
   });
 });
 
-// List models endpoint (OpenAI compatible)
+// List models endpoint
 app.get('/v1/models', (req, res) => {
   const models = Object.keys(MODEL_MAPPING).map(model => ({
     id: model,
@@ -71,12 +91,11 @@ app.get('/v1/models', (req, res) => {
   res.json({ object: 'list', data: models });
 });
 
-// Chat completions endpoint (main proxy)
+// Chat completions endpoint
 app.post('/v1/chat/completions', async (req, res) => {
   try {
     const { model, messages, temperature, max_tokens, stream } = req.body;
     
-    // Smart model selection with fallback
     let nimModel = MODEL_MAPPING[model];
     if (!nimModel) {
       try {
@@ -104,7 +123,6 @@ app.post('/v1/chat/completions', async (req, res) => {
       }
     }
     
-    // Transform OpenAI request to NIM format
     const nimRequest = {
       model: nimModel,
       messages: messages,
@@ -114,7 +132,6 @@ app.post('/v1/chat/completions', async (req, res) => {
       stream: stream || false
     };
     
-    // Make request to NVIDIA NIM API
     const response = await axios.post(`${NIM_API_BASE}/chat/completions`, nimRequest, {
       headers: {
         'Authorization': `Bearer ${NIM_API_KEY}`,
@@ -144,7 +161,6 @@ app.post('/v1/chat/completions', async (req, res) => {
               if (data.choices?.[0]?.delta) {
                 const reasoning = data.choices[0].delta.reasoning_content;
                 const content = data.choices[0].delta.content;
-                
                 if (SHOW_REASONING) {
                   let combinedContent = '';
                   if (reasoning && !reasoningStarted) { combinedContent = '<think>\n' + reasoning; reasoningStarted = true; }
@@ -199,7 +215,7 @@ app.post('/v1/chat/completions', async (req, res) => {
   }
 });
 
-// Catch-all for unsupported endpoints
+// Catch-all
 app.all('*', (req, res) => {
   res.status(404).json({
     error: { message: `Endpoint ${req.path} not found`, type: 'invalid_request_error', code: 404 }
