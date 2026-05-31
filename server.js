@@ -68,6 +68,8 @@ const MODEL_MAPPING = {
   'gpt-oss-120b':       'openai/gpt-oss-120b',                      // Direct access
   'claude-3-sonnet':    'openai/gpt-oss-20b',                       // Lighter
   'llama-4-maverick':   'meta/llama-4-maverick-17b-128e-instruct',  // Meta multimodal
+  'step-3.5-flash':     'stepfun-ai/step-3.5-flash',               // StepFun 196B MoE, 256K context
+  'step-3.7-flash':     'stepfun-ai/step-3.7-flash',               // ⭐ NEW May 28 2026 - multimodal
 };
 
 // Health check endpoint
