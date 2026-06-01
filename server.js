@@ -42,7 +42,7 @@ const MODEL_MAPPING = {
 
   // --- MISTRAL ---
   'mistral-large':      'mistralai/mistral-large-3-675b',           // Mistral flagship 675B
-  'mistral-medium':     'mistralai/mistral-medium-3-5-128b',        // 128B dense, 256K context
+  'mistral-medium':     'mistralai/mistral-medium-3.5-128b',        // 128B dense, 256K context
   'mistral-small':      'mistralai/mistral-small-4-119b-2603',      // 119B, 256K context
   'claude-3-haiku':     'mistralai/mistral-nemo-12b-instruct',      // Speedy fallback
 
