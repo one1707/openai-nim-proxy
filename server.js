@@ -57,6 +57,7 @@ const MODEL_MAPPING = {
   // --- NVIDIA NEMOTRON ---
   'nemotron-super':     'nvidia/nemotron-3-super-120b-a12b',        // 120B agentic
   'nemotron-nano-omni': 'nvidia/nemotron-3-nano-omni-30b-a3b-reasoning', // Multimodal
+  'nemotron-ultra':     'nvidia/nemotron-3-ultra-550b-a55b',        // ⭐ NEW TODAY - 550B, 1M context, #2 open-weight globally
 
   // --- GLM (Z.AI) ---
   'glm-4.7':            'z-ai/glm4.7',                              // ⚠️ May be deprecated
