@@ -25,12 +25,43 @@ const ENABLE_THINKING_MODE = false;
 // MODEL MAPPING - Type the LEFT side into Janitor AI
 // ============================================================
 const MODEL_MAPPING = {
+
   // --- BEST FOR RP ---
-  'z-ai/glm4.7':        'z-ai/glm4.7',                              // ✅ Best for RP (if working)
   'kimi-k2':            'moonshotai/kimi-k2-instruct',              // ✅ Great for RP
   'kimi-k2-thinking':   'moonshotai/kimi-k2-thinking',              // ✅ Great for RP + thinking
   'kimi-k2.6':          'moonshotai/kimi-k2.6',                     // ✅ Latest Kimi
   'deepseek-v4-pro':    'deepseek-ai/deepseek-v4-pro',              // ✅ Best available DeepSeek
+
+  // --- GLM (Z.AI) ---
+  'glm-4.7':            'z-ai/glm4.7',                              // ⚠️ May be deprecated
+  'glm-5':              'z-ai/glm-5.1',                             // GLM-5 deprecated 4/20/26
+  'glm-5.1':            'z-ai/glm-5.1',                             // Previous GLM flagship
+  'glm-5.2':            'z-ai/glm-5.2',                             // ⭐ NEW - 753B, 1M context
+
+  // --- MISTRAL ---
+  'mistral-large':      'mistralai/mistral-large-3-675b',           // Mistral flagship 675B
+  'mistral-medium':     'mistralai/mistral-medium-3.5-128b',        // 128B dense, 256K context
+  'mistral-small':      'mistralai/mistral-small-4-119b-2603',      // 119B, 256K context
+  'claude-3-haiku':     'mistralai/mistral-nemo-12b-instruct',      // Speedy fallback
+
+  // --- QWEN ---
+  'gemini-pro':         'qwen/qwen3-235b-a22b-instruct-2507',       // Qwen3 235B
+  'qwen-122b':          'qwen/qwen3.5-122b-a10b',                   // Qwen3.5 122B
+  'qwen-397b':          'qwen/qwen3.5-397b-a17b',                   // Qwen3.5 397B VLM
+
+  // --- MINIMAX ---
+  'minimax-m2.5':       'minimaxai/minimax-m2.5',                   // 230B MoE
+  'minimax-m2.7':       'minimaxai/minimax-m2.7',                   // 230B MoE, 205K context
+  'minimax-m3':         'minimaxai/minimax-m3',                     // ⭐ 428B, 1M context
+
+  // --- NVIDIA NEMOTRON ---
+  'nemotron-super':     'nvidia/nemotron-3-super-120b-a12b',        // 120B agentic
+  'nemotron-nano-omni': 'nvidia/nemotron-3-nano-omni-30b-a3b-reasoning', // Multimodal
+  'nemotron-ultra':     'nvidia/nemotron-3-ultra-550b-a55b',        // ⭐ 550B, 1M context
+
+  // --- STEPFUN ---
+  'step-3.5-flash':     'stepfun-ai/step-3.5-flash',               // 196B MoE, 256K context
+  'step-3.7-flash':     'stepfun-ai/step-3.7-flash',               // ⭐ NEW - multimodal
 
   // --- GENERAL / FAST ---
   'gpt-3.5-turbo':      'meta/llama-3.3-70b-instruct',              // Fast
@@ -38,39 +69,13 @@ const MODEL_MAPPING = {
   'gpt-4o-mini':        'meta/llama-3.3-70b-instruct',              // Fast
   'gpt-4':              'nvidia/llama-3.1-nemotron-ultra-253b-v1',  // NVIDIA flagship
   'gpt-4-turbo':        'moonshotai/kimi-k2-instruct-0905',         // Long context
-  'gemini-pro':         'qwen/qwen3-235b-a22b-instruct-2507',       // Qwen3 235B
-
-  // --- MISTRAL ---
-  'mistral-large':      'mistralai/mistral-large-3-675b',           // Mistral flagship 675B
-  'mistral-medium':     'mistralai/mistral-medium-3.5-128b',        // 128B dense, 256K context ✅ fixed
-  'mistral-small':      'mistralai/mistral-small-4-119b-2603',      // 119B, 256K context
-  'claude-3-haiku':     'mistralai/mistral-nemo-12b-instruct',      // Speedy fallback
-
-  // --- QWEN ---
-  'qwen-122b':          'qwen/qwen3.5-122b-a10b',                   // Qwen3.5 122B
-  'qwen-397b':          'qwen/qwen3.5-397b-a17b',                   // ⭐ Qwen3.5 397B VLM
-
-  // --- MINIMAX ---
-  'minimax-m2.5':       'minimaxai/minimax-m2.5',                   // 230B MoE
-  'minimax-m2.7':       'minimaxai/minimax-m2.7',                   // 230B MoE, 205K context
-
-  // --- NVIDIA NEMOTRON ---
-  'nemotron-super':     'nvidia/nemotron-3-super-120b-a12b',        // 120B agentic
-  'nemotron-nano-omni': 'nvidia/nemotron-3-nano-omni-30b-a3b-reasoning', // Multimodal
-  'nemotron-ultra':     'nvidia/nemotron-3-ultra-550b-a55b',        // ⭐ NEW TODAY - 550B, 1M context, #2 open-weight globally
-
-  // --- GLM (Z.AI) ---
-  'glm-4.7':            'z-ai/glm4.7',                              // ⚠️ May be deprecated
-  'glm-5':              'z-ai/glm-5.1',                             // GLM-5 deprecated 4/20/26
-  'glm-5.1':            'z-ai/glm-5.1',                             // Latest GLM
 
   // --- OTHER ---
   'claude-3-opus':      'openai/gpt-oss-120b',                      // Large model
   'gpt-oss-120b':       'openai/gpt-oss-120b',                      // Direct access
   'claude-3-sonnet':    'openai/gpt-oss-20b',                       // Lighter
   'llama-4-maverick':   'meta/llama-4-maverick-17b-128e-instruct',  // Meta multimodal
-  'step-3.5-flash':     'stepfun-ai/step-3.5-flash',               // StepFun 196B MoE, 256K context
-  'step-3.7-flash':     'stepfun-ai/step-3.7-flash',               // ⭐ NEW May 28 2026 - multimodal
+
 };
 
 // Health check endpoint
