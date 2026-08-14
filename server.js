@@ -58,6 +58,7 @@ const MODEL_MAPPING = {
   'nemotron-super':     'nvidia/nemotron-3-super-120b-a12b',        // 120B agentic
   'nemotron-nano-omni': 'nvidia/nemotron-3-nano-omni-30b-a3b-reasoning', // Multimodal
   'nemotron-ultra':     'nvidia/nemotron-3-ultra-550b-a55b',        // ⭐ 550B, 1M context
+  'nemotron-lightning': 'nvidia/nemotron-3.5-lightning-30b-a3b',   // ⭐ NEW Aug 11 2026 - fast, 1M context
 
   // --- STEPFUN ---
   'step-3.5-flash':     'stepfun-ai/step-3.5-flash',               // 196B MoE, 256K context
@@ -75,6 +76,7 @@ const MODEL_MAPPING = {
   'gpt-oss-120b':       'openai/gpt-oss-120b',                      // Direct access
   'claude-3-sonnet':    'openai/gpt-oss-20b',                       // Lighter
   'llama-4-maverick':   'meta/llama-4-maverick-17b-128e-instruct',  // Meta multimodal
+  'muse-glimmer':       'meta/muse-glimmer-30b',                    // ⭐ NEW Aug 10 2026 - Meta 30B multimodal agentic
 
 };
 
