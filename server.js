@@ -28,7 +28,7 @@ const MODEL_MAPPING = {
 
   // --- BEST FOR RP ---
   'gemma-4-31b':        'google/gemma-4-31b-it',                    // ⭐ Google 31B, 256K context
-  'kimi-k2':            'moonshotai/kimi-k2-instruct',              // ✅ Great for RP
+  'kimi-k3':            'moonshotai/kimi-k3',              // ✅ Great for RP
   'kimi-k2-thinking':   'moonshotai/kimi-k2-thinking',              // ✅ Great for RP + thinking
   'kimi-k2.6':          'moonshotai/kimi-k2.6',                     // ✅ Latest Kimi
   'deepseek-v4-pro-0813':   'deepseek-ai/deepseek-v4-pro-0813',       // V4 Pro removed, redirecting to Flash 0731
