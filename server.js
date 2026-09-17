@@ -28,17 +28,19 @@ const MODEL_MAPPING = {
 
   // --- BEST FOR RP ---
   'gemma-4-31b':        'google/gemma-4-31b-it',                    // ⭐ Google 31B, 256K context
-  'kimi-k3':            'moonshotai/kimi-k3',              // ✅ Great for RP
+  'kimi-k2':            'moonshotai/kimi-k2-instruct',              // ✅ Great for RP
   'kimi-k2-thinking':   'moonshotai/kimi-k2-thinking',              // ✅ Great for RP + thinking
   'kimi-k2.6':          'moonshotai/kimi-k2.6',                     // ✅ Latest Kimi
-  'deepseek-v4-pro-0813':   'deepseek-ai/deepseek-v4-pro-0813',       // V4 Pro removed, redirecting to Flash 0731
+  'deepseek-v4-pro':    'deepseek-ai/deepseek-v4-flash-0731',       // V4 Pro removed, redirecting to Flash 0731
   'deepseek-v4-flash':  'deepseek-ai/deepseek-v4-flash-0731',       // ⭐ NEW Aug 17 2026 - 304B MoE ⚠️ may hallucinate
 
   // --- GLM (Z.AI) ---
   'glm-4.7':            'z-ai/glm4.7',                              // ⚠️ May be deprecated
   'glm-5':              'z-ai/glm-5.1',                             // GLM-5 deprecated 4/20/26
   'glm-5.1':            'z-ai/glm-5.1',                             // Previous GLM flagship
-  'glm-5.2':            'z-ai/glm-5.2',                             // ⭐ NEW - 753B, 1M context
+  'glm-5.2':            'z-ai/glm-5.2',                             // ⭐ 753B, 1M context
+  'glm-5.3':            'z-ai/glm-5.3',                             // ⭐ NEW - 1.3M context, 944K output
+  'glm-5.3-flash':      'z-ai/glm-5.3-flash',                      // ⭐ NEW - 320B MoE, fast + multimodal
 
   // --- MISTRAL ---
   'mistral-large':      'mistralai/mistral-large-3-675b',           // Mistral flagship 675B
