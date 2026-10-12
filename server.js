@@ -31,8 +31,9 @@ const MODEL_MAPPING = {
   'kimi-k2':            'moonshotai/kimi-k2-instruct',              // ✅ Great for RP
   'kimi-k2-thinking':   'moonshotai/kimi-k2-thinking',              // ✅ Great for RP + thinking
   'kimi-k2.6':          'moonshotai/kimi-k2.6',                     // ✅ Latest Kimi
-  'deepseek-v4-pro':    'deepseek-ai/deepseek-v4-flash-0731',       // V4 Pro removed, redirecting to Flash 0731
-  'deepseek-v4-flash':  'deepseek-ai/deepseek-v4-flash-0731',       // ⭐ NEW Aug 17 2026 - 304B MoE ⚠️ may hallucinate
+  'deepseek-v4-pro':    'deepseek-ai/deepseek-v4-flash-0731',       // V4 Pro removed, redirecting
+  'deepseek-v4-flash':  'deepseek-ai/deepseek-v4-flash-0731',       // DeepSeek V4 Flash 0731
+  'deepseek-v4.1-flash':'deepseek-ai/deepseek-v4.1-flash',          // ⭐ NEW - 552B MoE, 1M context
 
   // --- GLM (Z.AI) ---
   'glm-4.7':            'z-ai/glm4.7',                              // ⚠️ May be deprecated
