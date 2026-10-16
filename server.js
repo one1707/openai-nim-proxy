@@ -61,6 +61,7 @@ const MODEL_MAPPING = {
 
   // --- NVIDIA NEMOTRON ---
   'nemotron-super':     'nvidia/nemotron-3-super-120b-a12b',        // 120B agentic
+  'nemotron-super-vl':  'nvidia/nemotron-3.5-super-vl-120b-a12b',  // ⭐ NEW Oct 15 2026 - vision+text+video
   'nemotron-nano-omni': 'nvidia/nemotron-3-nano-omni-30b-a3b-reasoning', // Multimodal
   'nemotron-ultra':     'nvidia/nemotron-3-ultra-550b-a55b',        // ⭐ 550B, 1M context
   'nemotron-lightning': 'nvidia/nemotron-3.5-lightning-30b-a3b',   // ⭐ NEW Aug 11 2026 - fast, 1M context
