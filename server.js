@@ -57,7 +57,8 @@ const MODEL_MAPPING = {
   // --- MINIMAX ---
   'minimax-m2.5':       'minimaxai/minimax-m2.5',                   // 230B MoE
   'minimax-m2.7':       'minimaxai/minimax-m2.7',                   // 230B MoE, 205K context
-  'minimax-m3':         'minimaxai/minimax-m3',                     // ⭐ 428B, 1M context
+  'minimax-m3':         'minimaxai/minimax-m3',                     // 428B, 1M context
+  'minimax-m3.1-flash': 'minimaxai/minimax-m3.1-flash',             // ⭐ NEW TODAY Oct 23 2026 - 428B, 1M context
 
   // --- NVIDIA NEMOTRON ---
   'nemotron-super':     'nvidia/nemotron-3-super-120b-a12b',        // 120B agentic
