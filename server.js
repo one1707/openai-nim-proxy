@@ -44,7 +44,7 @@ const MODEL_MAPPING = {
   'glm-5.3-flash':      'z-ai/glm-5.3-flash',                      // ⭐ NEW - 320B MoE, fast + multimodal
 
   // --- MISTRAL ---
-  'mistral-large':      'mistralai/mistral-large-3-675b',           // Mistral flagship 675B
+  'mistral-large-4':      'mistralai/mistral-large-4-1t-a52b',           // Mistral flagship 675B
   'mistral-medium':     'mistralai/mistral-medium-3.5-128b',        // 128B dense, 256K context
   'mistral-small':      'mistralai/mistral-small-4-119b-2603',      // 119B, 256K context
   'claude-3-haiku':     'mistralai/mistral-nemo-12b-instruct',      // Speedy fallback
