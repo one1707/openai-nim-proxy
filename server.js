@@ -27,7 +27,7 @@ const ENABLE_THINKING_MODE = false;
 const MODEL_MAPPING = {
 
   // --- BEST FOR RP ---
-  'gemma-4-31b':        'google/gemma-4-31b-it',                    // ⭐ Google 31B, 256K context
+  'gemma-4-31b-it':        'google/gemma-4-31b-it',                    // ⭐ Google 31B, 256K context
   'diffusiongemma-26b-a4b-it':            'google/diffusiongemma-26b-a4b-it',              // ✅ Great for RP
   'kimi-k2-thinking':   'moonshotai/kimi-k2-thinking',              // ✅ Great for RP + thinking
   'kimi-k2.6':          'moonshotai/kimi-k2.6',                     // ✅ Latest Kimi
